@@ -31,7 +31,7 @@ export default async function AdminCoursesPage() {
         </Card>
       ) : (
         <div className="grid gap-4">
-          {courses.map((course) => (
+          {courses.map((course: typeof courses[number]) => (
             <Card key={course.id} className="hover:shadow-md transition-shadow">
               <CardContent className="flex items-center justify-between py-4">
                 <div className="flex items-center gap-4">

@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Plus, BookOpen } from "lucide-react"
 
+type CourseWithCount = Awaited<ReturnType<typeof prisma.course.findMany<{
+  include: { _count: { select: { modules: true; enrollments: true } } }
+}>>>[number]
+
 export default async function AdminCoursesPage() {
   const courses = await prisma.course.findMany({
     include: { _count: { select: { modules: true, enrollments: true } } },
@@ -31,7 +35,7 @@ export default async function AdminCoursesPage() {
         </Card>
       ) : (
         <div className="grid gap-4">
-          {courses.map((course: typeof courses[number]) => (
+          {courses.map((course: CourseWithCount) => (
             <Card key={course.id} className="hover:shadow-md transition-shadow">
               <CardContent className="flex items-center justify-between py-4">
                 <div className="flex items-center gap-4">

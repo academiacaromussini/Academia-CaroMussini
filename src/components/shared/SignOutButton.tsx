@@ -10,7 +10,7 @@ export function SignOutButton() {
       variant="ghost"
       size="sm"
       className="w-full justify-start text-gray-600 hover:text-red-600"
-      onClick={() => signOut({ callbackUrl: "/login" })}
+      onClick={() => signOut({ callbackUrl: `${window.location.origin}/login` })}
     >
       <LogOut size={16} className="mr-2" /> Cerrar sesión
     </Button>

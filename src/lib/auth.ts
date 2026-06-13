@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET ?? "r6dwtAOSQqXvGLn40vJ+kM9xrrNdPdN2yQF+l1F6T8Q=",
   session: { strategy: "jwt" },
   trustHost: true,
   basePath: "/api/auth",

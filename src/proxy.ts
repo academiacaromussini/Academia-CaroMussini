@@ -6,7 +6,7 @@ export async function proxy(req: NextRequest) {
 
   const token = await getToken({
     req,
-    secret: process.env.AUTH_SECRET,
+    secret: process.env.AUTH_SECRET ?? "r6dwtAOSQqXvGLn40vJ+kM9xrrNdPdN2yQF+l1F6T8Q=",
   })
 
   const isLoggedIn = !!token
